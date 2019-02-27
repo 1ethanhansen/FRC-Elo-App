@@ -4,11 +4,15 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat.startActivity
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import kotlin.math.roundToInt
+
+var redAlliance = Array(3){emptyTeam}
+var blueAlliance = Array(3){emptyTeam}
 
 class runMatch1 : AppCompatActivity() {
 
@@ -21,9 +25,6 @@ class runMatch1 : AppCompatActivity() {
 
     var driverStationInt = 1
     var allianceInt = 0
-
-    val redAlliance = Array(3){emptyTeam}
-    val blueAlliance = Array(3){emptyTeam}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,9 +64,29 @@ class runMatch1 : AppCompatActivity() {
                 blueAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
             }
         } else {
-            findViewById<EditText>(R.id.et_input2).visibility = View.VISIBLE
-            findViewById<Button>(R.id.but_enter2).visibility = View.VISIBLE
-            findViewById<TextView>(R.id.tv_prompt).text = "Please enter the name of team #$inputNumber"
+            inputName = findViewById<EditText>(R.id.et_input2).text.toString()
+
+            val newTeam = Team(inputNumber, inputName)
+
+            teamsByRank.add(0, newTeam)
+
+            if (allianceInt == 0) {
+                redAlliancesDisplay = redAlliancesDisplay + "Team $inputNumber, team ${newTeam.name} " +
+                        "with an elo rating of ${newTeam.rating.roundToInt()}\n"
+            } else {
+                blueAlliancesDisplay = blueAlliancesDisplay + "Team $inputNumber, team ${newTeam.name} " +
+                        "with an elo rating of ${newTeam.rating.roundToInt()}\n"
+            }
+
+            findViewById<TextView>(R.id.tv_red_teams).text = redAlliancesDisplay
+            findViewById<TextView>(R.id.tv_blue_teams).text = blueAlliancesDisplay
+
+            //Keep track of who is on which alliance
+            if (allianceInt == 0) {
+                redAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
+            } else {
+                blueAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
+            }
         }
         counter++
 
@@ -75,35 +96,6 @@ class runMatch1 : AppCompatActivity() {
         displayString = "Enter the team number in ${if(allianceInt == 0) "RED" else "BLUE"} " +
                 "alliance station $driverStationInt: "
         findViewById<TextView>(R.id.tv_prompt).text = displayString
-    }
-
-    fun nameEntered(view: View) {
-        inputName = findViewById<EditText>(R.id.et_input2).text.toString()
-
-        val newTeam = Team(inputNumber, inputName)
-
-        teamsByRank.add(0, newTeam)
-
-        if (allianceInt == 0) {
-            redAlliancesDisplay = redAlliancesDisplay + "Team $inputNumber, team ${newTeam.name} " +
-                    "with an elo rating of ${newTeam.rating.roundToInt()}\n"
-        } else {
-            blueAlliancesDisplay = blueAlliancesDisplay + "Team $inputNumber, team ${newTeam.name} " +
-                    "with an elo rating of ${newTeam.rating.roundToInt()}\n"
-        }
-
-        findViewById<TextView>(R.id.tv_red_teams).text = redAlliancesDisplay
-        findViewById<TextView>(R.id.tv_blue_teams).text = blueAlliancesDisplay
-
-        //Keep track of who is on which alliance
-        if (allianceInt == 0) {
-            redAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
-        } else {
-            blueAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
-        }
-
-        findViewById<EditText>(R.id.et_input2).visibility = View.INVISIBLE
-        findViewById<Button>(R.id.but_enter2).visibility = View.INVISIBLE
     }
 
     fun runningPtTwo() {

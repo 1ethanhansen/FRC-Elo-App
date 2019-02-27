@@ -8,4 +8,69 @@
         android:background="@color/colorBackground"
         tools:context=".run_match_two">
 
+    <TextView
+            android:text="Red Alliance has a 50% chance of winning, giving blue 50%"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:id="@+id/tv_chances" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp" android:textColor="@color/colorText" android:textSize="32sp"
+    />
+    <TextView
+            android:text="Who Actually Won?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_who_won" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_chances" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="24dp" android:textColor="@color/colorText" android:textSize="24sp"/>
+    <Button
+            android:text="RED"
+            android:onClick="redEntered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/but_red" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/tv_who_won"
+            android:textSize="18sp"/>
+    <Button
+            android:text="BLUE"
+            android:onClick="blueEntered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/but_blue"
+            android:textSize="18sp" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_who_won" android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:text="WHOA that was crazy!\nWhat match was that?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_whoa"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:textSize="18sp" app:layout_constraintHorizontal_bias="0.461" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/but_red" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_enter_match" android:textColor="@color/colorText"
+            android:visibility="invisible"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="match #"
+            android:textColorHint="@color/colorPrimary"
+            android:ems="10"
+            android:id="@+id/et_enter_match"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent" android:textColor="@color/colorText"
+            android:visibility="invisible"/>
+    <Button
+            android:text="Enter"
+            android:onClick="saveUpsets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/but_enter_match" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/et_enter_match" android:layout_marginStart="24dp"
+            android:visibility="invisible"/>
 </android.support.constraint.ConstraintLayout>

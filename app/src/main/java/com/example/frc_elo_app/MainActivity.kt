@@ -19,14 +19,12 @@ class Team (var number: Int,
 
 val teamsByRank = mutableListOf<Team>()
 val emptyTeam = Team(0, "0")
+val listOfUpsets = mutableListOf<String>()
 
 class MainActivity : AppCompatActivity() {
 
     val redAlliance = Array(3){emptyTeam}
     val blueAlliance = Array(3){emptyTeam}
-
-
-    val listOfUpsets = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,13 +48,26 @@ class MainActivity : AppCompatActivity() {
             val file = File(letDirectory, "elo.txt")
 
             val inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
-            val readLines = inputAsString.split('\n')
-            for (i in readLines) {
-                val mReadDataList = i.split('\t')
+            if (inputAsString.length > 5) {
+                val readLines = inputAsString.split('\n').toMutableList()
+                readLines.removeAt(readLines.lastIndex)
+                for (i in readLines) {
+                    val mReadDataList = i.split('\t')
 
-                val readTeam = Team(mReadDataList[0].toInt(), mReadDataList[1], mReadDataList[2].toDouble())
+                    val readTeam = Team(mReadDataList[0].toInt(), mReadDataList[1], mReadDataList[2].toDouble())
 
-                teamsByRank.add(0, readTeam)
+                    teamsByRank.add(0, readTeam)
+                }
+            }
+
+            val upsetFile = File(letDirectory, "upsets.txt")
+
+            val upsetsAsString = FileInputStream(upsetFile).bufferedReader().use { it.readText() }
+            if (upsetsAsString.length > 5) {
+                val readUpsetLines = upsetsAsString.split('\n')
+                for (i in readUpsetLines) {
+                    listOfUpsets.add(0, i)
+                }
             }
         } else {
             Toast.makeText(this, "Gib Permission ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
@@ -73,7 +84,21 @@ class MainActivity : AppCompatActivity() {
                 it.write("".toByteArray())
             }
 
-            teamsByRank.forEach { file.appendText("${it.number}\t${it.name}\t${it.rating}") }
+            teamsByRank.sortByDescending { it.rating }
+            teamsByRank.forEach { file.appendText("${it.number}\t${it.name}\t${it.rating}\n") }
+
+
+            val upsetFile = File(letDirectory, "upsets.txt")
+
+            FileOutputStream(upsetFile).use {
+                it.write("".toByteArray())
+            }
+
+            if(listOfUpsets.size == 0) {
+                Toast.makeText(this, "Gib upset ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
+            }
+
+            listOfUpsets.forEach {upsetFile.appendText("$it\n")}
         } else {
             Toast.makeText(this, "Gib Permission ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
         }

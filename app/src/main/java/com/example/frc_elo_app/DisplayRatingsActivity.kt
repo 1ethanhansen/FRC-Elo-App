@@ -22,6 +22,7 @@ class DisplayRatingsActivity : AppCompatActivity() {
 
     fun displayRatings() {
         var displayString = ""
+        teamsByRank.sortByDescending { it.rating }
         teamsByRank.forEach { displayString = displayString +
                 "${it.rating.roundToInt().toString().padEnd(5, '-')}-" +
                 "-${it.name.padEnd(20, '-')}" +
