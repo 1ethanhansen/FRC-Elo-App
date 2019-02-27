@@ -44,7 +44,7 @@ class run_match_two : AppCompatActivity() {
         redAlliance.forEach { it.rating = it.rating + newRedRatingDelta }
         blueAlliance.forEach { it.rating = it.rating + newBlueRatingDelta }
 
-        if (redChance < 49) {
+        if (redChance < .49) {
             findViewById<TextView>(R.id.tv_whoa).visibility = View.VISIBLE
             findViewById<EditText>(R.id.et_enter_match).visibility = View.VISIBLE
             findViewById<Button>(R.id.but_enter_match).visibility = View.VISIBLE
@@ -63,7 +63,7 @@ class run_match_two : AppCompatActivity() {
         redAlliance.forEach { it.rating = it.rating + newRedRatingDelta }
         blueAlliance.forEach { it.rating = it.rating + newBlueRatingDelta }
 
-        if (blueChance < 49) {
+        if (blueChance < .49) {
             findViewById<TextView>(R.id.tv_whoa).visibility = View.VISIBLE
             findViewById<EditText>(R.id.et_enter_match).visibility = View.VISIBLE
             findViewById<Button>(R.id.but_enter_match).visibility = View.VISIBLE

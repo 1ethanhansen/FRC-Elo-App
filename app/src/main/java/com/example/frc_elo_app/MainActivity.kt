@@ -41,6 +41,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(displayIntent)
     }
 
+    fun upsetMe(view: View) {
+        val upsetIntent = Intent(this, DisplayUpsetsActivity::class.java)
+        startActivity(upsetIntent)
+    }
+
     fun loadMe(view: View) {
         if (isExternalStorageWritable()) {
             val letDirectory = File(Environment.getExternalStorageDirectory(), "FRC-ELO")
