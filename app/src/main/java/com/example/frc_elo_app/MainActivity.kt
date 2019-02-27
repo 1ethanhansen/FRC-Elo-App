@@ -35,7 +35,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun runMe(view: View) {
-
+        val runIntent = Intent(this, runMatch1::class.java)
+        startActivity(runIntent)
     }
 
     fun displayRatingsMe(view: View) {
