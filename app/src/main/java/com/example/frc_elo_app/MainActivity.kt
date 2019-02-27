@@ -74,6 +74,8 @@ class MainActivity : AppCompatActivity() {
                     listOfUpsets.add(0, i)
                 }
             }
+
+            Toast.makeText(this, "LOADED", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(this, "Gib Permission ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
         }
@@ -104,6 +106,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             listOfUpsets.forEach {upsetFile.appendText("$it\n")}
+
+            Toast.makeText(this, "SAVED", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(this, "Gib Permission ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
         }
