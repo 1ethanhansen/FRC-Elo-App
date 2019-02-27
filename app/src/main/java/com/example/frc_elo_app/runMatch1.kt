@@ -3,6 +3,7 @@ package com.example.frc_elo_app
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat.startActivity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -33,19 +34,11 @@ class runMatch1 : AppCompatActivity() {
     }
 
     fun teamEntered(view: View) {
-        counter++
 
-        driverStationInt = counter % 3 + 1
-        allianceInt = counter / 3
-
-        if (counter > 5) {
+        if (counter > 4) {
             counter = 0
             runningPtTwo()
         }
-
-        displayString = "Enter the team number in ${if(allianceInt == 0) "RED" else "BLUE"} " +
-                "alliance station $driverStationInt: "
-        findViewById<TextView>(R.id.tv_prompt).text = displayString
 
         var userInput = findViewById<EditText>(R.id.et_input).text.toString()
         inputNumber = userInput.toInt()
@@ -74,6 +67,14 @@ class runMatch1 : AppCompatActivity() {
             findViewById<Button>(R.id.but_enter2).visibility = View.VISIBLE
             findViewById<TextView>(R.id.tv_prompt).text = "Please enter the name of team #$inputNumber"
         }
+        counter++
+
+        driverStationInt = counter % 3 + 1
+        allianceInt = counter / 3
+
+        displayString = "Enter the team number in ${if(allianceInt == 0) "RED" else "BLUE"} " +
+                "alliance station $driverStationInt: "
+        findViewById<TextView>(R.id.tv_prompt).text = displayString
     }
 
     fun nameEntered(view: View) {
