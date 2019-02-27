@@ -18,10 +18,9 @@ class Team (var number: Int,
             var rating: Double = 1000.0)
 
 val teamsByRank = mutableListOf<Team>()
+val emptyTeam = Team(0, "0")
 
 class MainActivity : AppCompatActivity() {
-
-    val emptyTeam = Team(0, "0")
 
     val redAlliance = Array(3){emptyTeam}
     val blueAlliance = Array(3){emptyTeam}

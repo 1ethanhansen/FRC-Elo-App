@@ -10,14 +10,15 @@
 
     <TextView
             android:text="Enter the team # in RED alliance station 1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="359dp"
+            android:layout_height="79dp"
             android:textColor="@color/colorText"
-            android:id="@+id/tv_prompt" android:layout_marginTop="24dp"
+            android:id="@+id/tv_prompt"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp" android:textSize="30sp"/>
+            android:textSize="30sp" android:layout_marginTop="24dp" android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp" app:layout_constraintEnd_toEndOf="parent"/>
     <EditText
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:text=""
@@ -29,17 +30,68 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/tv_prompt"/>
     <Button
-            android:text="Button"
+            android:text="Enter"
+            android:onClick="teamEntered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/but_enter"
             android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/tv_prompt"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp"/>
-    <TextView
-            android:text="TextView"
+            app:layout_constraintStart_toEndOf="@+id/et_input" android:layout_marginStart="24dp"/>
+    <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView2" android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/et_input" app:layout_constraintStart_toStartOf="parent"
+            android:inputType="textPersonName"
+            android:text=""
+            android:hint="team name"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorPrimary"
+            android:ems="10"
+            android:id="@+id/et_input2" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/et_input"
+            android:visibility="invisible"/>
+    <Button
+            android:text="Enter"
+            android:onClick="nameEntered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/but_enter2"
+            app:layout_constraintStart_toEndOf="@+id/et_input" android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/but_enter"
+            android:visibility="invisible"/>
+    <TextView
+            android:text="Red Alliance"
+            android:textColor="@color/colorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_red_label"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
+            android:textSize="24sp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/et_input2"/>
+    <TextView
+            android:text="TextView"
+            android:textColor="@color/colorText"
+            android:layout_width="330dp"
+            android:layout_height="100dp"
+            android:id="@+id/tv_red_teams" android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_red_label" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="24dp"/>
+    <TextView
+            android:text="TextView"
+            android:textColor="@color/colorText"
+            android:layout_width="330dp"
+            android:layout_height="100dp"
+            android:id="@+id/tv_blue_teams"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp" android:layout_marginTop="36dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_blue_label"/>
+    <TextView
+            android:text="Blue Alliance"
+            android:textColor="@color/colorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_blue_label" android:layout_marginTop="44dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_red_teams" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp" android:textSize="24sp"/>
 </android.support.constraint.ConstraintLayout>
