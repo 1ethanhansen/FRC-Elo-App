@@ -24,9 +24,9 @@ class DisplayRatingsActivity : AppCompatActivity() {
         var displayString = ""
         teamsByRank.sortByDescending { it.rating }
         teamsByRank.forEach { displayString = displayString +
-                "${it.rating.roundToInt().toString().padEnd(5, '-')}-" +
-                "-${it.name.padEnd(20, '-')}" +
-                "-${it.number.toString().padEnd(5, '-') }\n" }
+                it.rating.roundToInt().toString().padEnd(5, '-') +
+                it.name.padEnd(20, '-') +
+                it.number.toString() + "\n"}
         findViewById<TextView>(R.id.tv_display).text = displayString
     }
 }

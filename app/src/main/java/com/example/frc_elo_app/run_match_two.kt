@@ -60,8 +60,8 @@ class run_match_two : AppCompatActivity() {
 
         val newRedRatingDelta = 64 * (redScore - redChance)
         val newBlueRatingDelta = 64 * (blueScore - blueChance)
-        redAlliance.forEach { it.rating = it.rating + newRedRatingDelta }
-        blueAlliance.forEach { it.rating = it.rating + newBlueRatingDelta }
+        redAlliance.forEach { it.rating += newRedRatingDelta }
+        blueAlliance.forEach { it.rating += newBlueRatingDelta }
 
         if (blueChance < .49) {
             findViewById<TextView>(R.id.tv_whoa).visibility = View.VISIBLE
