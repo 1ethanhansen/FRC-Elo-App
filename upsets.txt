@@ -1,13 +1,133 @@
+sundome sf2m2
+sundome q60
+sundome q54
+sundome q50
+sundome q47
+sundome q43
+sundome q42
 
-q10
-q11
+sundome q1
+
+Clackams q55
+Clackams q54
+Clackams q44
+clackams q36
+clackams q35
+clackams q32
+
+clackams q23
+
+Clackams q13
+
+auburn q76
+
+auburn q60
+auburn q58
+auburn q55
+auburn q51
+auburn q50
+auburn q46
+auburn q44
+auburn q38
+auburn q37
+auburn q34
+
+wilsonville sf1m3
+wilsonville sf1m2
+wilsonville qf4m2
+wilsonville qf4m1
+
+q13
 q12
-q14
-q15
-q17
-q18
-q19
-q28
-q31
-q43
+q10
+q9
+
+
+q68
+
 q47
+q43
+q31
+q28
+q19
+q18
+q17
+q15
+q14
+q12
+q11
+q10
+
+
+qf3
+qf7
+qf3t
+s2
+sft2
+
+
+Wilsonville q15
+wilsonville q17
+wilsonville q23
+wilsonville q30
+wilsonville q31
+wilsonville q32
+wilsonville q37
+wilsonville q40
+wilsonville q43
+wilsonville q46
+wilsonville q55
+wilsonville q67
+wilsonville q71
+wilsonville q72
+
+auburn q4
+auburn q5
+Auburn q10
+auburn q13
+auburn q15
+auburn q24
+auburn q25
+Auburn q28
+auburn q29
+auburn q31
+
+Auburn q66
+
+auburn qf2m2
+Auburn qf3m1
+Auburn qf3m2
+auburn sf1m2
+auburn sf1m3
+auburn f2
+
+clackams q15
+clackams q22
+
+
+Clackams q64
+Clackams q65
+Clackams q68
+Clackams q69
+Clackams qf2m1
+Clackams qf3m2
+Clackams qf3m3
+Clackams sf1m1
+Clackams sf1m2
+Clackams sf2m1
+Clackams f1
+Clackams f2
+
+sundome q4
+sundome q5
+sundome q9
+sundome q11
+sundome q15
+sundome q20
+sundome q24
+sundome q25
+sundome q26
+sundome q27
+sundome q28
+sundome q35
+sundome q36
