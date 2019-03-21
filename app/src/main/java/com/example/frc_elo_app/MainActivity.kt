@@ -48,6 +48,8 @@ class MainActivity : AppCompatActivity() {
 
     fun loadMe(view: View) {
         if (isExternalStorageWritable()) {
+            teamsByRank.clear()
+
             val letDirectory = File(Environment.getExternalStorageDirectory(), "FRC-ELO")
             letDirectory.mkdirs()
             val file = File(letDirectory, "elo.txt")
