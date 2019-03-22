@@ -17,8 +17,11 @@ The solution I came up with is just to find the average Elo rating of each allia
 
 ## How to use the app
 While I currently haven't uploaded an apk, I will soon.
+Note: the app is designed for and optimized for a Google Pixel 2, seeing as that is what I have. If you use it on your device and it turns out looking weird, open up an issue and I'll see what I can do.
+### Required specs:
+Android 6.0.0 or higher
 
-If you don't want to just run the apk, skip down to from Installing from Android Studio.
+If you don't want to just run the apk, skip down to Installing from Android Studio.
 ### Installing from apk
 1. Download the apk
 2. Find it in downloads
