@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import kotlin.math.roundToInt
 
 var redAlliance = Array(3){emptyTeam}
@@ -40,6 +41,13 @@ class runMatch1 : AppCompatActivity() {
 
         var userInput = findViewById<EditText>(R.id.et_team_num).text.toString()
         inputNumber = userInput.toInt()
+
+        if (redAlliance.find{it.number == inputNumber} != null || blueAlliance.find{it.number == inputNumber} != null) {
+            Toast.makeText(this, "Can't have the same team twice", Toast.LENGTH_LONG).show()
+
+            val mainIntent = Intent(this, MainActivity::class.java)
+            startActivity(mainIntent)
+        }
 
         if (teamsByRank.find {it.number == inputNumber} != null) {
             val foundName = teamsByRank.find {it.number == inputNumber}!!.name
