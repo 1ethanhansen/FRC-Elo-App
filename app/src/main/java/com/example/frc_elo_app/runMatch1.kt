@@ -33,6 +33,9 @@ class runMatch1 : AppCompatActivity() {
         counter = 0
         displayString = "Enter the team number in RED alliance station 1: "
         findViewById<TextView>(R.id.tv_prompt).text = displayString
+
+        redAlliance = Array(3){emptyTeam}
+        blueAlliance = Array(3){emptyTeam}
     }
 
     fun teamEntered(view: View) {
