@@ -16,5 +16,6 @@
             android:id="@+id/tv_display" android:layout_marginTop="24dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="24dp" android:scrollbarAlwaysDrawHorizontalTrack="false"
-            android:scrollbarAlwaysDrawVerticalTrack="true"/>
+            android:scrollbarAlwaysDrawVerticalTrack="true" android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 </android.support.constraint.ConstraintLayout>
