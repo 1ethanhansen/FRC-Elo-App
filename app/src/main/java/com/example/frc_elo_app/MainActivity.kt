@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+            listOfUpsets.clear()
             val upsetFile = File(letDirectory, "upsets.txt")
 
             val upsetsAsString = FileInputStream(upsetFile).bufferedReader().use { it.readText() }

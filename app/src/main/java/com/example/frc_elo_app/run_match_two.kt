@@ -73,6 +73,25 @@ class run_match_two : AppCompatActivity() {
         }
     }
 
+    fun tieEntered(view: View) {
+        val redScore = .5
+        val blueScore = .5
+
+        val newRedRatingDelta = 64 * (redScore - redChance)
+        val newBlueRatingDelta = 64 * (blueScore - blueChance)
+        redAlliance.forEach { it.rating += newRedRatingDelta }
+        blueAlliance.forEach { it.rating += newBlueRatingDelta }
+
+        if (blueChance < .48 || redChance < .48) {
+            findViewById<TextView>(R.id.tv_whoa).visibility = View.VISIBLE
+            findViewById<EditText>(R.id.et_enter_match).visibility = View.VISIBLE
+            findViewById<Button>(R.id.but_enter_match).visibility = View.VISIBLE
+        } else {
+            val mainIntent = Intent(this, MainActivity::class.java)
+            startActivity(mainIntent)
+        }
+    }
+
     fun calcAverages() {
         redAlliance.forEach { redAllianceAverage += it.rating }
         blueAlliance.forEach { blueAllianceAverage += it.rating }
