@@ -3,10 +3,7 @@ package com.example.frc_elo_app
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.content.ContextCompat.startActivity
-import android.view.KeyEvent
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import kotlin.math.roundToInt
@@ -41,7 +38,7 @@ class runMatch1 : AppCompatActivity() {
             runningPtTwo()
         }
 
-        var userInput = findViewById<EditText>(R.id.et_input).text.toString()
+        var userInput = findViewById<EditText>(R.id.et_team_num).text.toString()
         inputNumber = userInput.toInt()
 
         if (teamsByRank.find {it.number == inputNumber} != null) {
@@ -64,7 +61,7 @@ class runMatch1 : AppCompatActivity() {
                 blueAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
             }
         } else {
-            inputName = findViewById<EditText>(R.id.et_input2).text.toString()
+            inputName = findViewById<EditText>(R.id.et_team_name).text.toString()
 
             val newTeam = Team(inputNumber, inputName)
 
@@ -96,6 +93,10 @@ class runMatch1 : AppCompatActivity() {
         displayString = "Enter the team number in ${if(allianceInt == 0) "RED" else "BLUE"} " +
                 "alliance station $driverStationInt: "
         findViewById<TextView>(R.id.tv_prompt).text = displayString
+
+        findViewById<EditText>(R.id.et_team_num).text.clear()
+        findViewById<EditText>(R.id.et_team_name).text.clear()
+
     }
 
     fun runningPtTwo() {
