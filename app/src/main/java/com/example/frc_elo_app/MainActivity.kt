@@ -23,30 +23,30 @@ val listOfUpsets = mutableListOf<String>()
 
 class MainActivity : AppCompatActivity() {
 
-    val redAlliance = Array(3){emptyTeam}
-    val blueAlliance = Array(3){emptyTeam}
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 
     fun runMe(view: View) {
+        loadAll()
         val runIntent = Intent(this, runMatch1::class.java)
         startActivity(runIntent)
     }
 
     fun displayRatingsMe(view: View) {
+        loadAll()
         val displayIntent = Intent(this, DisplayRatingsActivity::class.java)
         startActivity(displayIntent)
     }
 
     fun upsetMe(view: View) {
+        loadAll()
         val upsetIntent = Intent(this, DisplayUpsetsActivity::class.java)
         startActivity(upsetIntent)
     }
 
-    fun loadMe(view: View) {
+    fun loadAll() {
         if (isExternalStorageWritable()) {
             teamsByRank.clear()
 
@@ -79,38 +79,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             Toast.makeText(this, "LOADED", Toast.LENGTH_LONG).show()
-        } else {
-            Toast.makeText(this, "Gib Permission ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    fun saveMe(view: View) {
-        if (isExternalStorageWritable()) {
-            val letDirectory = File(Environment.getExternalStorageDirectory(), "FRC-ELO")
-            letDirectory.mkdirs()
-            val file = File(letDirectory, "elo.txt")
-
-            FileOutputStream(file).use {
-                it.write("".toByteArray())
-            }
-
-            teamsByRank.sortByDescending { it.rating }
-            teamsByRank.forEach { file.appendText("${it.number}\t${it.name}\t${it.rating}\n") }
-
-
-            val upsetFile = File(letDirectory, "upsets.txt")
-
-            FileOutputStream(upsetFile).use {
-                it.write("".toByteArray())
-            }
-
-            if(listOfUpsets.size == 0) {
-                Toast.makeText(this, "Gib upset ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
-            }
-
-            listOfUpsets.forEach {upsetFile.appendText("$it\n")}
-
-            Toast.makeText(this, "SAVED", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(this, "Gib Permission ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
         }

@@ -3,10 +3,13 @@ package com.example.frc_elo_app
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import java.io.File
+import java.io.FileOutputStream
 import kotlin.math.roundToInt
 
 var redAlliance = Array(3){emptyTeam}
@@ -105,6 +108,44 @@ class runMatch1 : AppCompatActivity() {
         findViewById<EditText>(R.id.et_team_num).text.clear()
         findViewById<EditText>(R.id.et_team_name).text.clear()
 
+        saveAll()
+    }
+
+    /* Checks if external storage is available for read and write */
+    fun isExternalStorageWritable(): Boolean {
+        return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
+    }
+
+    fun saveAll() {
+        if (isExternalStorageWritable()) {
+            val letDirectory = File(Environment.getExternalStorageDirectory(), "FRC-ELO")
+            letDirectory.mkdirs()
+            val file = File(letDirectory, "elo.txt")
+
+            FileOutputStream(file).use {
+                it.write("".toByteArray())
+            }
+
+            teamsByRank.sortByDescending { it.rating }
+            teamsByRank.forEach { file.appendText("${it.number}\t${it.name}\t${it.rating}\n") }
+
+
+            val upsetFile = File(letDirectory, "upsets.txt")
+
+            FileOutputStream(upsetFile).use {
+                it.write("".toByteArray())
+            }
+
+            if(listOfUpsets.size == 0) {
+                Toast.makeText(this, "Gib upset ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
+            }
+
+            listOfUpsets.forEach {upsetFile.appendText("$it\n")}
+
+            Toast.makeText(this, "SAVED", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "Gib Permission ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
+        }
     }
 
     fun runningPtTwo() {
