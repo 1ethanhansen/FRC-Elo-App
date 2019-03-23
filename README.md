@@ -16,7 +16,6 @@ All the normal implementations of the Elo rating system have just single players
 The solution I came up with is just to find the average Elo rating of each alliance, then when using the update function to add update delta to each team individually. An interesting side effect of this implementation is that the theoretical (but would never happen) upper limit of Elo ratings for an FRC team is 4200, rather than 1400.
 
 ## How to use the app
-While I currently haven't uploaded an apk, I will soon.
 Note: the app is designed for and optimized for a Google Pixel 2, seeing as that is what I have. If you use it on your device and it turns out looking weird, open up an issue and I'll see what I can do.
 ### Required specs:
 Android 6.0.0 or higher
