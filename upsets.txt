@@ -131,3 +131,16 @@ sundome q27
 sundome q28
 sundome q35
 sundome q36
+
+west valley q6
+west valley q18
+west valley q15
+west valley q16
+west valley q19
+west valley q25
+west valley q26
+west valley q27
+west valley q30
+west valley q41
+west valley q44
+west valley q47
