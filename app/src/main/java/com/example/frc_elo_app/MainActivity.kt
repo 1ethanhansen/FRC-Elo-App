@@ -20,12 +20,14 @@ class Team (var number: Int,
 val teamsByRank = mutableListOf<Team>()
 val emptyTeam = Team(-1, "0")
 val listOfUpsets = mutableListOf<String>()
+var count = 0
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        count = 0
     }
 
     fun runMe(view: View) {
@@ -49,6 +51,14 @@ class MainActivity : AppCompatActivity() {
     fun backMeUp(view: View) {
         loadAll()
         saveBackups()
+    }
+
+    fun countMe(view: View) {
+        count++
+        if (count > 9) {
+            val eggIntent = Intent(this, activity_easter_egg::class.java)
+            startActivity(eggIntent)
+        }
     }
 
     fun loadAll() {
