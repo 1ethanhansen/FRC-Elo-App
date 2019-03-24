@@ -47,6 +47,8 @@ class run_match_two : AppCompatActivity() {
         redAlliance.forEach { it.rating = it.rating + newRedRatingDelta }
         blueAlliance.forEach { it.rating = it.rating + newBlueRatingDelta }
 
+        Toast.makeText(this, "RED", Toast.LENGTH_SHORT).show()
+
         if (redChance < .49) {
             displayHidden()
         } else {
@@ -63,6 +65,8 @@ class run_match_two : AppCompatActivity() {
         redAlliance.forEach { it.rating += newRedRatingDelta }
         blueAlliance.forEach { it.rating += newBlueRatingDelta }
 
+        Toast.makeText(this, "BLUE", Toast.LENGTH_SHORT).show()
+
         if (blueChance < .49) {
             displayHidden()
         } else {
@@ -78,6 +82,8 @@ class run_match_two : AppCompatActivity() {
         val newBlueRatingDelta = 64 * (blueScore - blueChance)
         redAlliance.forEach { it.rating += newRedRatingDelta }
         blueAlliance.forEach { it.rating += newBlueRatingDelta }
+
+        Toast.makeText(this, "TIE", Toast.LENGTH_SHORT).show()
 
         if (blueChance < .48 || redChance < .48) {
             displayHidden()

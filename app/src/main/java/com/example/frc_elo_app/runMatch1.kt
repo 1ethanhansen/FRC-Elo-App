@@ -74,6 +74,8 @@ class runMatch1 : AppCompatActivity() {
             } else {
                 blueAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
             }
+
+            Toast.makeText(this, "FOUND", Toast.LENGTH_SHORT).show()
         } else {
             inputName = findViewById<EditText>(R.id.et_team_name).text.toString()
 
@@ -98,6 +100,8 @@ class runMatch1 : AppCompatActivity() {
             } else {
                 blueAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
             }
+
+            Toast.makeText(this, "TEAM ADDED", Toast.LENGTH_LONG).show()
         }
         counter++
 
@@ -110,8 +114,6 @@ class runMatch1 : AppCompatActivity() {
 
         findViewById<EditText>(R.id.et_team_num).text.clear()
         findViewById<EditText>(R.id.et_team_name).text.clear()
-
-        saveAll()
     }
 
     /* Checks if external storage is available for read and write */
@@ -153,6 +155,7 @@ class runMatch1 : AppCompatActivity() {
     }
 
     fun runningPtTwo() {
+        saveAll()
         val partTwoIntent = Intent(this, run_match_two::class.java)
         startActivity(partTwoIntent)
     }
