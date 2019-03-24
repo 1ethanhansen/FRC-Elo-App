@@ -143,7 +143,8 @@ class runMatch1 : AppCompatActivity() {
                 Toast.makeText(this, "Gib upset ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
             }
 
-            listOfUpsets.forEach {upsetFile.appendText("$it\n")}
+            val distinct = listOfUpsets.distinct()
+            distinct.forEach {upsetFile.appendText("$it\n")}
 
             Toast.makeText(this, "SAVED", Toast.LENGTH_LONG).show()
         } else {
