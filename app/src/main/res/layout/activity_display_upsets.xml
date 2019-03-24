@@ -8,15 +8,21 @@
         android:background="@color/colorBackground"
         tools:context=".DisplayUpsetsActivity">
 
-    <TextView
-            android:text="None"
-            android:scrollbars="vertical"
+    <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorText"
-            android:id="@+id/tv_display2" android:layout_marginTop="24dp"
+            android:layout_height="wrap_content" android:layout_marginTop="24dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp" android:scrollbarAlwaysDrawHorizontalTrack="false"
-            android:scrollbarAlwaysDrawVerticalTrack="true" android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:layout_marginStart="24dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <TextView
+                    android:text="None"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:id="@+id/tv_display2" android:scrollbarAlwaysDrawHorizontalTrack="false"
+                    android:scrollbarAlwaysDrawVerticalTrack="true" android:layout_marginBottom="24dp"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.271"/>
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
