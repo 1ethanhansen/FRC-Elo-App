@@ -41,12 +41,20 @@
             android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/buttonRunMatch"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp" android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/but_save_backup"/>
     <ImageView
             android:layout_width="160dp"
             android:layout_height="171dp" app:srcCompat="@drawable/onecowboi"
             android:id="@+id/nerdHerdLogo" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp"
             android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/buttonDisplayRatings"
+            android:layout_marginBottom="24dp" app:layout_constraintBottom_toBottomOf="parent"/>
+    <Button
+            android:text="Save to Backup"
+            android:onClick="backMeUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/but_save_backup" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
             android:layout_marginBottom="24dp" app:layout_constraintBottom_toBottomOf="parent"/>
 </android.support.constraint.ConstraintLayout>
