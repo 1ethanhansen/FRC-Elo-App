@@ -1,6 +1,7 @@
 package com.example.frc_elo_app
 
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
@@ -33,6 +34,7 @@ class runMatch1 : AppCompatActivity() {
         counter = 0
         displayString = "Enter the team number in RED alliance station 1: "
         findViewById<TextView>(R.id.tv_prompt).text = displayString
+        findViewById<TextView>(R.id.tv_prompt).setTextColor(Color.parseColor("#FF4043"))
 
         redAlliance = Array(3){emptyTeam}
         blueAlliance = Array(3){emptyTeam}
@@ -107,6 +109,12 @@ class runMatch1 : AppCompatActivity() {
 
         driverStationInt = counter % 3 + 1
         allianceInt = counter / 3
+
+        if (allianceInt == 0) {
+            findViewById<TextView>(R.id.tv_prompt).setTextColor(Color.parseColor("#FF4043"))
+        } else {
+            findViewById<TextView>(R.id.tv_prompt).setTextColor(Color.parseColor("#2575FF"))
+        }
 
         displayString = "Enter the team number in ${if(allianceInt == 0) "RED" else "BLUE"} " +
                 "alliance station $driverStationInt: "
