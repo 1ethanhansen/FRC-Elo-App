@@ -49,7 +49,7 @@ class run_match_two : AppCompatActivity() {
 
         Toast.makeText(this, "RED", Toast.LENGTH_SHORT).show()
 
-        if (redChance < .49) {
+        if (redChance < upsetThreshold) {
             displayHidden()
         } else {
             startMain()
@@ -67,7 +67,7 @@ class run_match_two : AppCompatActivity() {
 
         Toast.makeText(this, "BLUE", Toast.LENGTH_SHORT).show()
 
-        if (blueChance < .49) {
+        if (blueChance < upsetThreshold) {
             displayHidden()
         } else {
             startMain()
@@ -85,7 +85,7 @@ class run_match_two : AppCompatActivity() {
 
         Toast.makeText(this, "TIE", Toast.LENGTH_SHORT).show()
 
-        if (blueChance < .48 || redChance < .48) {
+        if (blueChance < upsetThreshold || redChance < upsetThreshold) {
             displayHidden()
         } else {
             startMain()
