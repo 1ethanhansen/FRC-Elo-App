@@ -117,8 +117,9 @@ class run_match_two : AppCompatActivity() {
 
     fun saveUpsets(view: View) {
         val inputStr = findViewById<EditText>(R.id.et_enter_match).text.toString()
-        listOfUpsets.add(0, inputStr)
-        Toast.makeText(this, listOfUpsets[0], Toast.LENGTH_SHORT).show()
+        listOfUpsets.add(0, "$inputStr | ${(redChance * 100).roundToInt()}% " +
+                "to ${(blueChance * 100).roundToInt()}%")
+        Toast.makeText(this, inputStr, Toast.LENGTH_SHORT).show()
 
         saveAll()
 
