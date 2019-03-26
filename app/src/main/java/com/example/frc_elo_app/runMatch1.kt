@@ -155,44 +155,6 @@ class runMatch1 : AppCompatActivity() {
         findViewById<EditText>(R.id.et_team_name).visibility = View.INVISIBLE
     }
 
-    /* Checks if external storage is available for read and write */
-    fun isExternalStorageWritable(): Boolean {
-        return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
-    }
-
-    fun saveAll() {
-        if (isExternalStorageWritable()) {
-            val letDirectory = File(Environment.getExternalStorageDirectory(), "FRC-ELO")
-            letDirectory.mkdirs()
-            val file = File(letDirectory, "elo.txt")
-
-            FileOutputStream(file).use {
-                it.write("".toByteArray())
-            }
-
-            teamsByRank.sortByDescending { it.rating }
-            teamsByRank.forEach { file.appendText("${it.number}\t${it.name}\t${it.rating}\n") }
-
-
-            val upsetFile = File(letDirectory, "upsets.txt")
-
-            FileOutputStream(upsetFile).use {
-                it.write("".toByteArray())
-            }
-
-            if(listOfUpsets.size == 0) {
-                Toast.makeText(this, "Gib upset ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
-            }
-
-            val distinct = listOfUpsets.distinct()
-            distinct.forEach {upsetFile.appendText("$it\n")}
-
-            Toast.makeText(this, "SAVED", Toast.LENGTH_LONG).show()
-        } else {
-            Toast.makeText(this, "Gib Permission ༼ つ ◕_◕ ༽つ", Toast.LENGTH_LONG).show()
-        }
-    }
-
     fun runningPtTwo() {
         saveAll()
         val partTwoIntent = Intent(this, run_match_two::class.java)

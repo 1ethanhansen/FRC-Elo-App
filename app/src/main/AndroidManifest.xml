@@ -11,6 +11,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".NewTeams">
+        </activity>
         <activity android:name=".activity_easter_egg">
         </activity>
         <activity android:name=".DisplayUpsetsActivity">
