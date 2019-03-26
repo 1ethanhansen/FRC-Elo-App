@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -36,11 +37,20 @@ class runMatch1 : AppCompatActivity() {
         findViewById<TextView>(R.id.tv_prompt).text = displayString
         findViewById<TextView>(R.id.tv_prompt).setTextColor(Color.parseColor("#FF4043"))
 
+        findViewById<Button>(R.id.but_enter).visibility = View.VISIBLE
+        findViewById<EditText>(R.id.et_team_num).visibility = View.VISIBLE
+        findViewById<Button>(R.id.but_enter_num).visibility = View.INVISIBLE
+        findViewById<EditText>(R.id.et_team_name).visibility = View.INVISIBLE
+
         redAlliance = Array(3){emptyTeam}
         blueAlliance = Array(3){emptyTeam}
     }
 
     fun teamEntered(view: View) {
+        findViewById<Button>(R.id.but_enter).visibility = View.VISIBLE
+        findViewById<EditText>(R.id.et_team_num).visibility = View.VISIBLE
+        findViewById<Button>(R.id.but_enter_num).visibility = View.INVISIBLE
+        findViewById<EditText>(R.id.et_team_name).visibility = View.INVISIBLE
 
         if (counter > 4) {
             counter = 0
@@ -78,33 +88,19 @@ class runMatch1 : AppCompatActivity() {
             }
 
             Toast.makeText(this, "FOUND", Toast.LENGTH_SHORT).show()
+
+            finishIt()
         } else {
-            inputName = findViewById<EditText>(R.id.et_team_name).text.toString()
+            Toast.makeText(this, "Please enter the name of team $inputNumber", Toast.LENGTH_LONG).show()
 
-            val newTeam = Team(inputNumber, inputName)
-
-            teamsByRank.add(0, newTeam)
-
-            if (allianceInt == 0) {
-                redAlliancesDisplay = redAlliancesDisplay + "Team $inputNumber, team ${newTeam.name} " +
-                        "with an elo rating of ${newTeam.rating.roundToInt()}\n"
-            } else {
-                blueAlliancesDisplay = blueAlliancesDisplay + "Team $inputNumber, team ${newTeam.name} " +
-                        "with an elo rating of ${newTeam.rating.roundToInt()}\n"
-            }
-
-            findViewById<TextView>(R.id.tv_red_teams).text = redAlliancesDisplay
-            findViewById<TextView>(R.id.tv_blue_teams).text = blueAlliancesDisplay
-
-            //Keep track of who is on which alliance
-            if (allianceInt == 0) {
-                redAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
-            } else {
-                blueAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
-            }
-
-            Toast.makeText(this, "TEAM ADDED", Toast.LENGTH_LONG).show()
+            findViewById<Button>(R.id.but_enter).visibility = View.INVISIBLE
+            findViewById<EditText>(R.id.et_team_num).visibility = View.INVISIBLE
+            findViewById<Button>(R.id.but_enter_num).visibility = View.VISIBLE
+            findViewById<EditText>(R.id.et_team_name).visibility = View.VISIBLE
         }
+    }
+
+    fun finishIt() {
         counter++
 
         driverStationInt = counter % 3 + 1
@@ -122,6 +118,41 @@ class runMatch1 : AppCompatActivity() {
 
         findViewById<EditText>(R.id.et_team_num).text.clear()
         findViewById<EditText>(R.id.et_team_name).text.clear()
+    }
+
+    fun newTeam(view: View) {
+        inputName = findViewById<EditText>(R.id.et_team_name).text.toString()
+
+        val newTeam = Team(inputNumber, inputName)
+
+        teamsByRank.add(0, newTeam)
+
+        if (allianceInt == 0) {
+            redAlliancesDisplay = redAlliancesDisplay + "Team $inputNumber, team ${newTeam.name} " +
+                    "with an elo rating of ${newTeam.rating.roundToInt()}\n"
+        } else {
+            blueAlliancesDisplay = blueAlliancesDisplay + "Team $inputNumber, team ${newTeam.name} " +
+                    "with an elo rating of ${newTeam.rating.roundToInt()}\n"
+        }
+
+        findViewById<TextView>(R.id.tv_red_teams).text = redAlliancesDisplay
+        findViewById<TextView>(R.id.tv_blue_teams).text = blueAlliancesDisplay
+
+        //Keep track of who is on which alliance
+        if (allianceInt == 0) {
+            redAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
+        } else {
+            blueAlliance[driverStationInt - 1] = teamsByRank.find {it.number == inputNumber}!!
+        }
+
+        Toast.makeText(this, "TEAM ADDED", Toast.LENGTH_LONG).show()
+
+        finishIt()
+
+        findViewById<Button>(R.id.but_enter).visibility = View.VISIBLE
+        findViewById<EditText>(R.id.et_team_num).visibility = View.VISIBLE
+        findViewById<Button>(R.id.but_enter_num).visibility = View.INVISIBLE
+        findViewById<EditText>(R.id.et_team_name).visibility = View.INVISIBLE
     }
 
     /* Checks if external storage is available for read and write */
