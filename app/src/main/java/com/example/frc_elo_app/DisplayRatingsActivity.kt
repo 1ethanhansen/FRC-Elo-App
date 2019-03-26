@@ -23,10 +23,11 @@ class DisplayRatingsActivity : AppCompatActivity() {
     fun displayRatings() {
         var displayString = ""
         teamsByRank.sortByDescending { it.rating }
-        teamsByRank.forEach { displayString = displayString +
-                it.rating.roundToInt().toString().padEnd(5, '-') +
-                it.name.padEnd(20, '-') +
-                it.number.toString() + "\n"}
+        teamsByRank.forEachIndexed { index, team -> displayString = displayString +
+                "${index + 1}: ".padEnd(5, ' ') +
+                team.rating.roundToInt().toString().padEnd(5, '-') +
+                team.name.padEnd(20, '-') +
+                team.number.toString() + "\n"}
         findViewById<TextView>(R.id.tv_display).text = displayString
     }
 }
