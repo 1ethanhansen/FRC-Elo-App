@@ -40,8 +40,8 @@
             android:id="@+id/buttonListUpsets"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="24dp"
-            android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/but_save_backup"
-            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/buttonRunMatch"/>
+            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/buttonRunMatch"
+            android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/but_save_backup"/>
     <ImageView
             android:layout_width="160dp"
             android:onClick="countMe"
@@ -88,6 +88,15 @@
             android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/buttonRunMatch"
             android:layout_marginStart="24dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonListUpsets"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/buttonListUpsets"/>
+    <Button
+            android:text="Run elims"
+            android:onClick="eliminateMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/but_run_alliances" android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/but_save_backup" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonListUpsets" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"/>
 </android.support.constraint.ConstraintLayout>

@@ -5,6 +5,18 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 
+class Team (var number: Int,
+            var name: String,
+            var rating: Double = 1000.0)
+
+class Alliance (var captain: Team,
+                var pickOne: Team,
+                var pickTwo: Team) {
+    fun getAllianceString() : String {
+        return "\t${captain.number}\n\t\t${pickOne.number}\n\t\t${pickTwo.number}\n"
+    }
+}
+
 fun saveAll() {
     if (isExternalStorageWritable()) {
         val letDirectory = File(Environment.getExternalStorageDirectory(), "FRC-ELO")

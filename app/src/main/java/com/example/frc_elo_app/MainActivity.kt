@@ -15,10 +15,6 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.PrintWriter
 
-class Team (var number: Int,
-            var name: String,
-            var rating: Double = 1000.0)
-
 val teamsByRank = mutableListOf<Team>()
 val emptyTeam = Team(-1, "0")
 val listOfUpsets = mutableListOf<String>()
@@ -75,6 +71,12 @@ class MainActivity : AppCompatActivity() {
         loadAll()
         val addTeamsIntent = Intent(this, NewTeams::class.java)
         startActivity(addTeamsIntent)
+    }
+
+    fun eliminateMe(view: View) {
+        loadAll()
+        val elimsIntent = Intent(this, EnterAlliances::class.java)
+        startActivity(elimsIntent)
     }
 
     fun countMe(view: View) {
